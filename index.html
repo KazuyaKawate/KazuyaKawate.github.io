@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>見える化リマインダー</title>
+<meta name="description" content="頭の中に置けないなら、外に置けばいい。忘れものをそっと見える化する、やさしいリマインダー。">
+<meta name="theme-color" content="#4a3426">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>見える化リマインダー</h1>
+  <p class="tagline">頭の中に置けないなら、外に置けばいい</p>
+</header>
+
+<nav class="tabs" aria-label="画面切り替え">
+  <button type="button" class="tab is-active" data-view="today">今日</button>
+  <button type="button" class="tab" data-view="add">ついか</button>
+  <button type="button" class="tab" data-view="list">一覧・編集</button>
+</nav>
+
+<main>
+  <!-- 今日 -->
+  <section id="view-today" class="view is-active">
+    <div id="morning-summary" class="summary-card" aria-live="polite"></div>
+
+    <div id="praise" class="praise" hidden></div>
+
+    <div id="intro" class="intro-card" hidden>
+      <h2>つかいかた</h2>
+      <ol>
+        <li>「ついか」から、忘れたくないことを1つ置いてください。</li>
+        <li>今日のことは、この画面に大きく出ます。過ぎたものは赤く目立ちます。</li>
+        <li>できたら「やった！」を押してください。次がまた見えてきます。</li>
+      </ol>
+      <p class="intro-note">いまのバージョンは、アプリを開いたときに今日の予定をお見せする形です。時刻どおりの通知は今後の版で追加予定です。</p>
+      <button type="button" id="intro-close" class="btn btn-sub">わかった</button>
+    </div>
+
+    <h2 class="view-title">今日のリマインダー</h2>
+    <ul id="today-list" class="task-list"></ul>
+    <p id="today-empty" class="empty" hidden>今日の分は、ぜんぶ終わっています。<br>おつかれさま。</p>
+  </section>
+
+  <!-- ついか・編集 -->
+  <section id="view-add" class="view">
+    <h2 class="view-title" id="form-title">リマインダーを置く</h2>
+
+    <div class="templates" aria-label="テンプレート">
+      <button type="button" class="chip" data-template="薬">💊 薬</button>
+      <button type="button" class="chip" data-template="お迎え">🧒 お迎え</button>
+      <button type="button" class="chip" data-template="ゴミ出し">🗑 ゴミ出し</button>
+      <button type="button" class="chip" data-template="提出物">📄 提出物</button>
+      <button type="button" class="chip" data-template="買い物">🛒 買い物</button>
+    </div>
+
+    <form id="reminder-form">
+      <label class="field">
+        <span class="field-label">なにを？</span>
+        <input type="text" id="f-title" placeholder="例：薬を飲む" autocomplete="off" required>
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span class="field-label">いつの日？</span>
+          <input type="date" id="f-date" required>
+        </label>
+        <label class="field">
+          <span class="field-label">何時？</span>
+          <input type="time" id="f-time" required>
+        </label>
+      </div>
+      <label class="field">
+        <span class="field-label">くりかえし</span>
+        <select id="f-repeat">
+          <option value="none">くりかえさない</option>
+          <option value="daily">毎日</option>
+          <option value="weekly">毎週</option>
+        </select>
+      </label>
+      <fieldset class="field weekdays" id="weekday-box" hidden>
+        <legend class="field-label">曜日（毎週のとき）</legend>
+        <div class="weekday-row">
+          <label><input type="checkbox" value="0">日</label>
+          <label><input type="checkbox" value="1">月</label>
+          <label><input type="checkbox" value="2">火</label>
+          <label><input type="checkbox" value="3">水</label>
+          <label><input type="checkbox" value="4">木</label>
+          <label><input type="checkbox" value="5">金</label>
+          <label><input type="checkbox" value="6">土</label>
+        </div>
+      </fieldset>
+      <button type="submit" class="btn btn-main" id="form-submit">ここに置く</button>
+      <button type="button" class="btn btn-sub" id="form-cancel" hidden>編集をやめる</button>
+    </form>
+  </section>
+
+  <!-- 一覧・編集 -->
+  <section id="view-list" class="view">
+    <h2 class="view-title">置いてあるリマインダー</h2>
+    <ul id="all-list" class="task-list"></ul>
+    <p id="all-empty" class="empty" hidden>まだ何も置かれていません。<br>「ついか」から1つ置いてみてください。</p>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>このアプリは、毎日の工夫をお手伝いするためのものです。<br>医療・診断のためのものではありません。</p>
+  <p class="footer-small">データはこの端末の中だけに保存されます（サーバーには送られません）。</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

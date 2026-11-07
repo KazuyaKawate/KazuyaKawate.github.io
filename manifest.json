@@ -1,0 +1,25 @@
+{
+  "background_color": "#fdf6e9",
+  "description": "頭の中に置けないなら、外に置けばいい。忘れものをそっと見える化する、やさしいリマインダー。",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "lang": "ja",
+  "name": "見える化リマインダー",
+  "scope": "./",
+  "short_name": "見える化リマインダー",
+  "start_url": "./index.html",
+  "theme_color": "#4a3426"
+}

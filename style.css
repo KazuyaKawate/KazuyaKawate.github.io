@@ -1,0 +1,368 @@
+:root {
+  --cream: #fdf6e9;
+  --cream-dark: #f6ead3;
+  --paper: #fffdf7;
+  --brown: #4a3426;
+  --brown-soft: #7a5c44;
+  --gold: #c9a227;
+  --gold-soft: #e8cf7a;
+  --red: #b3372a;
+  --red-bg: #fdecea;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  max-width: 430px;
+  min-height: 100vh;
+  padding: 0 16px 32px;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", YuGothic,
+    "Noto Sans JP", Meiryo, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1, h2, .serif {
+  font-family: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho", YuMincho,
+    "Noto Serif JP", "MS PMincho", serif;
+}
+
+.app-header {
+  text-align: center;
+  padding: 28px 8px 8px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 27px;
+  letter-spacing: 0.04em;
+}
+
+.tagline {
+  margin: 6px 0 0;
+  color: var(--brown-soft);
+  font-size: 14px;
+}
+
+.tagline::before, .tagline::after {
+  content: "―";
+  color: var(--gold);
+  margin: 0 6px;
+}
+
+/* タブ */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 18px 0 20px;
+}
+
+.tab {
+  flex: 1;
+  min-height: 52px;
+  border: 2px solid var(--gold-soft);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--brown);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab.is-active {
+  background: var(--brown);
+  border-color: var(--brown);
+  color: var(--cream);
+}
+
+.view { display: none; }
+.view.is-active { display: block; }
+
+.view-title {
+  font-size: 20px;
+  margin: 18px 0 12px;
+  border-bottom: 2px solid var(--gold-soft);
+  padding-bottom: 6px;
+}
+
+/* 朝のまとめ */
+.summary-card {
+  background: linear-gradient(160deg, #fffdf7, var(--cream-dark));
+  border: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(74, 52, 38, 0.08);
+}
+
+.summary-card .summary-date {
+  font-size: 14px;
+  color: var(--brown-soft);
+  margin: 0 0 4px;
+}
+
+.summary-card .summary-count {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.summary-card .summary-first {
+  font-size: 19px;
+  margin: 8px 0 0;
+}
+
+.summary-card .summary-first strong {
+  color: var(--brown);
+  border-bottom: 3px solid var(--gold-soft);
+}
+
+/* 称賛 */
+.praise {
+  margin-top: 14px;
+  background: #fdf3d8;
+  border: 2px dashed var(--gold);
+  border-radius: var(--radius);
+  padding: 14px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* 使い方 */
+.intro-card {
+  margin-top: 14px;
+  background: var(--paper);
+  border: 1px solid var(--gold-soft);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.intro-card h2 { font-size: 18px; margin: 0 0 8px; }
+.intro-card ol { margin: 0; padding-left: 22px; }
+.intro-card li { margin: 4px 0; }
+.intro-note { font-size: 14px; color: var(--brown-soft); }
+
+/* タスク一覧 */
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task {
+  background: var(--paper);
+  border: 1px solid var(--gold-soft);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.task-main {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.task-time {
+  font-size: 21px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.task-title {
+  font-size: 19px;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.task-meta {
+  font-size: 13px;
+  color: var(--brown-soft);
+  margin-top: 2px;
+}
+
+/* 期限超過：大きく・赤く・しつこく */
+.task.is-overdue {
+  background: var(--red-bg);
+  border: 3px solid var(--red);
+  padding: 18px 16px;
+}
+
+.task.is-overdue .task-time { font-size: 26px; color: var(--red); }
+.task.is-overdue .task-title { font-size: 23px; color: var(--red); }
+
+.overdue-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-bottom: 6px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 52px;
+  padding: 10px 18px;
+  font-size: 17px;
+}
+
+.btn-done {
+  flex: 1;
+  background: var(--gold);
+  color: #fff;
+  font-size: 19px;
+  min-height: 58px;
+}
+
+.btn-done:active { background: #a9881f; }
+
+.btn-edit, .btn-delete {
+  background: var(--cream-dark);
+  color: var(--brown);
+  font-size: 15px;
+  min-height: 48px;
+}
+
+.btn-delete { color: var(--red); }
+
+.btn-main {
+  width: 100%;
+  background: var(--brown);
+  color: var(--cream);
+  font-size: 19px;
+  min-height: 60px;
+  margin-top: 8px;
+}
+
+.btn-sub {
+  width: 100%;
+  background: var(--cream-dark);
+  color: var(--brown);
+  margin-top: 10px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--brown-soft);
+  padding: 28px 0;
+}
+
+/* フォーム */
+.templates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.chip {
+  border: 2px solid var(--gold-soft);
+  background: var(--paper);
+  color: var(--brown);
+  border-radius: 999px;
+  min-height: 48px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chip:active { background: var(--gold-soft); }
+
+.field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.field-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="time"],
+.field select {
+  width: 100%;
+  min-height: 56px;
+  font-size: 18px;
+  padding: 10px 12px;
+  border: 2px solid var(--gold-soft);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--brown);
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field { flex: 1; }
+
+fieldset.field {
+  border: 2px solid var(--gold-soft);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: var(--paper);
+}
+
+fieldset.field legend { padding: 0 6px; }
+
+.weekday-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.weekday-row label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 48px;
+  padding: 6px 10px;
+  border: 2px solid var(--gold-soft);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--cream);
+}
+
+.weekday-row input { width: 18px; height: 18px; margin-right: 4px; }
+
+/* フッター */
+.app-footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gold-soft);
+  text-align: center;
+  font-size: 13px;
+  color: var(--brown-soft);
+}
+
+.footer-small { font-size: 12px; }
