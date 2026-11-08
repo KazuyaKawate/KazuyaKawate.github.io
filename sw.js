@@ -1,6 +1,6 @@
 'use strict';
 
-var CACHE_NAME = 'mieruka-reminder-v2';
+var CACHE_NAME = 'mieruka-reminder-v3';
 var APP_SHELL = [
   './',
   './index.html',
